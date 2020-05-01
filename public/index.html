@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
+    <meta charset="utf-8">
+    
+  <title>Hugo Dynamic Data Site</title>
+
+  </head>
+  <body>
+    <main class="group" role="main" aria-label="Main Content">
+      
+  <h1>Dynamic Attributes</h1>
+  <h2>HTML</h2>
+    <h2>Html (body)</h2>
+    
+    <p>Partial name: <code>default/html.html</code></p>
+    <h3>Rendered</h3>
+    <p>Hello World</p>
+
+    <h3>Source</h3>
+    <code>&lt;p&gt;Hello World&lt;/p&gt;
+</code>
+    <h2>Date (created_at)</h2>
+    
+    <p>Partial name: <code>default/date.html</code></p>
+    <h3>Rendered</h3>
+    
+<p><strong>Date:</strong> <time datetime="2019-04-02">Apr 2, 2019</time></p>
+
+    <h3>Source</h3>
+    <code>
+&lt;p&gt;&lt;strong&gt;Date:&lt;/strong&gt; &lt;time datetime=&#34;2019-04-02&#34;&gt;Apr 2, 2019&lt;/time&gt;&lt;/p&gt;
+</code>
+    <h2>Markdown (name)</h2>
+    
+    <p>Partial name: <code>default/markdown.html</code></p>
+    <h3>Rendered</h3>
+    Jeremy
+
+    <h3>Source</h3>
+    <code>Jeremy
+</code>
+    <h2>Markdown (subject)</h2>
+    
+    <p>Partial name: <code>default/markdown.html</code></p>
+    <h3>Rendered</h3>
+    <em>Hello World</em>
+
+    <h3>Source</h3>
+    <code>&lt;em&gt;Hello World&lt;/em&gt;
+</code>
+  <h2>JSON Document</h2>
+  <code>
+    {
+    "body": "&lt;p&gt;Hello World&lt;/p&gt;",
+    "created_at": "2019-04-02",
+    "name": "Jeremy",
+    "subject": "_Hello World_"
+    }
+  </code>
+
+    </main>
+  </body>
+</html>

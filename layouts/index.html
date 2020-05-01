@@ -3,6 +3,7 @@
 {{ end }}
 {{ define "main" }}
   <h1>Dynamic Attributes</h1>
+  <p>In this section, I'm using each attribute's type to dispatch its rendering to a named partial for that particular type.</p>
   <h2>HTML</h2>
   {{- range $predicateKey, $predicate := .Site.Data.attributes }}
     <h2>{{ title $predicate.type }} ({{ $predicateKey }})</h2>
@@ -14,6 +15,13 @@
     <code>{{ partial $partialName $predicate | htmlEscape | safeHTML }}</code>
   {{- end }}
   <h2>JSON Document</h2>
+  <p>
+    In this section, I'm creating a JSON document for each attribute's type.
+  </p>
+  {{/* Here we need to gather all the keys for the attributes. We need just the
+       keys, as they are strings, and can later be compared when we call the
+       `complement`. In hugo, we cannot run the `compliment` on a map/dict object
+  */}}
   {{- $keys := slice }}
   {{- range $key, $data := .Site.Data.attributes }}
     {{- $keys = $keys | append $key }}
@@ -22,10 +30,17 @@
   <code>
     {
   {{- range $key := ($keys | complement $last_key) }}
-    "{{ $key }}": "{{ index (index $.Site.Data.attributes $key) "value" }}",
+    {{- $predicate := index $.Site.Data.attributes $key }}
+    {{- $partialName := (printf "default/%s.json" $predicate.type )}}
+    {{ partial $partialName $predicate }},
   {{- end }}
+  {{/* NOTE: The above range and below range are almost exact copies. However,
+       in the above, after we render the partial, we add a comma. In the below
+       range, we do not add a comma after we render the partial */}}
   {{- range $key := $last_key }}
-    "{{ $key }}": "{{ index (index $.Site.Data.attributes $key) "value" }}"
+    {{- $predicate := index $.Site.Data.attributes $key }}
+    {{- $partialName := (printf "default/%s.json" $predicate.type )}}
+    {{ partial $partialName $predicate }}
   {{- end }}
     }
   </code>

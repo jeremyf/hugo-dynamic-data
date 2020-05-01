@@ -1,2 +1,1 @@
-{{- $value := . }}
-<p><strong>Date:</strong> <time datetime="{{ dateFormat "2006-01-02" .value }}">{{ dateFormat "Jan 2, 2006" .value }}</time></p>
+<p><strong>{{ .label }}</strong> <time datetime="{{ dateFormat "2006-01-02" .value }}">{{ dateFormat "Jan 2, 2006" .value }}</time></p>

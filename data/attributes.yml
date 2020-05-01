@@ -1,13 +1,17 @@
 ---
 created_at:
+  label: "Created At"
   type: date
   value: "2019-04-02"
 subject:
+  label: "Ye Ol' Subject"
   type: markdown
   value: _Hello World_
 body:
+  label: "The Body of It All"
   type: html
   value: <p>Hello World</p>
 name:
+  label: "nAmE"
   type: markdown
   value: Jeremy

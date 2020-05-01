@@ -1,0 +1,5 @@
+{
+  "title": { "type": "html", "label": "Title", "value": "<h1>Hugo Demo<h1><h2>Creative Approaches to Iteration</h2>"},
+  "author": { "type": "text", "label": "Author", "value": "Jeremy Friesen" },
+  "created_at": { "type": "date", "label": "Date", "value": "2020-05-01" }
+}

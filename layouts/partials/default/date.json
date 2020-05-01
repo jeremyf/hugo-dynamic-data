@@ -1,1 +1,1 @@
-"{{ .label }}": "{{ dateFormat "2006-01-02" .value }}"
+"{{ .label }}": "{{ dateFormat "Jan 2, 2006" .value }}"

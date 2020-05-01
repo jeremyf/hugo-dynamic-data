@@ -1,0 +1,13 @@
+---
+created_at:
+  type: date
+  value: "2019-04-02"
+subject:
+  type: markdown
+  value: _Hello World_
+body:
+  type: html
+  value: <p>Hello World</p>
+name:
+  type: markdown
+  value: Jeremy

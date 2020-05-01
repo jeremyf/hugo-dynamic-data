@@ -1,0 +1,32 @@
+{{ define "head" }}
+  <title>Hugo Dynamic Data Site</title>
+{{ end }}
+{{ define "main" }}
+  <h1>Dynamic Attributes</h1>
+  <h2>HTML</h2>
+  {{- range $predicateKey, $predicate := .Site.Data.attributes }}
+    <h2>{{ title $predicate.type }} ({{ $predicateKey }})</h2>
+    {{ $partialName := (printf "default/%s.html" $predicate.type )}}
+    <p>Partial name: <code>{{ $partialName }}</code></p>
+    <h3>Rendered</h3>
+    {{ partial $partialName $predicate }}
+    <h3>Source</h3>
+    <code>{{ partial $partialName $predicate | htmlEscape | safeHTML }}</code>
+  {{- end }}
+  <h2>JSON Document</h2>
+  {{- $keys := slice }}
+  {{- range $key, $data := .Site.Data.attributes }}
+    {{- $keys = $keys | append $key }}
+  {{- end }}
+  {{- $last_key := $keys | last 1 }}
+  <code>
+    {
+  {{- range $key := ($keys | complement $last_key) }}
+    "{{ $key }}": "{{ index (index $.Site.Data.attributes $key) "value" }}",
+  {{- end }}
+  {{- range $key := $last_key }}
+    "{{ $key }}": "{{ index (index $.Site.Data.attributes $key) "value" }}"
+  {{- end }}
+    }
+  </code>
+{{ end }}
